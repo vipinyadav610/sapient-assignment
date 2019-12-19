@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PostItem from "Components/PostItem";
+import PostSearch from "Components/PostSearch";
 import { inject, observer } from "mobx-react";
 import "./PostList.scss";
 
@@ -10,12 +11,25 @@ class PostList extends Component {
     this.props.posts.getPosts();
   }
   render() {
+    const {
+      onSearchPost,
+      filterPostList,
+      onSortOrderChange,
+      onSortByChange
+    } = this.props.posts;
     return (
-      <div className="post-list-container">
-        {this.props.posts.posts.map(post => {
-          return <PostItem {...post} />;
-        })}
-      </div>
+      <Fragment>
+        <PostSearch
+          onSearchPost={onSearchPost}
+          onSortOrderChange={onSortOrderChange}
+          onSortByChange={onSortByChange}
+        />
+        <div className="post-list-container">
+          {filterPostList.map(post => {
+            return <PostItem {...post} key={post.id} />;
+          })}
+        </div>
+      </Fragment>
     );
   }
 }

@@ -1,0 +1,27 @@
+.post-search-container {
+  display: flex;
+  padding: 10px 41px;
+  justify-content: space-between;
+  .post-sort-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 200px;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .post-search-container {
+    flex-direction: column;
+    width: 100%;
+    .post-sort-by {
+      margin-bottom: 10px;
+    }
+    form:first-child {
+      padding-bottom: 10px;
+    }
+    div:nth-child(2) {
+      flex-direction: column;
+    }
+  }
+}
